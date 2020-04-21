@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_extensions',
+    'rest_framework',
+
+    'AccountMe.apps.accounts',
 ]
 
 MIDDLEWARE = [
@@ -49,12 +54,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'AccountMe.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'AccountMe/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -77,7 +82,7 @@ WSGI_APPLICATION = 'AccountMe.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'AccountMe/db.sqlite3'),
     }
 }
 
