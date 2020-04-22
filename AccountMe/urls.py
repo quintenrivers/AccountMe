@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from AccountMe.apps.finance.urls import router as finance_router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('AccountMe.apps.core.accounts', namespace='accounts')),
+    path('api/', include(finance_router.urls)),
 ]
