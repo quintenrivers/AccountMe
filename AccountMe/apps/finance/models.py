@@ -4,7 +4,6 @@ from django.db import models
 class Transaction(models.Model):
     """
     A class used to represent a financial transaction
-    v0.1
     ...
 
     Attributes
@@ -28,25 +27,21 @@ class Transaction(models.Model):
 
     date: models.DateTimeField = models.DateTimeField()
     description: models.CharField = models.CharField(max_length=64)
-    debit: models.IntegerField = models.IntegerField()
-    credit: models.IntegerField = models.IntegerField()
+    amount: models.IntegerField = models.IntegerField()
     account: models.ForeignKey = models.ForeignKey('Account', on_delete=models.CASCADE)
 
     def __str__(self)->str:
-        return f"{self.date} {self.description} {self.debit} {self.credit}"
+        return f"AccountID #{account} '{self.description}' {self.amount}"
 
 
 class Account(models.Model):
     """
     A class to represent a financial account
-    v0.1
     ...
     Attributes
     ----------
     name : models.CharField(max_length=32, null=False)
         the name of the account
-    transactions : models.ManyToManyField('Transaction')
-        all of the transactions of an account
 
     Methods
     -------
