@@ -8,14 +8,12 @@ class Transaction(models.Model):
 
     Attributes
     ----------
-    date : models.DateTimeField
+    date : models.DateField
         the date of the transaction
     description : models.CharField(max_length=64)
         a description of the transactions
-    debit : models.IntegerField
-        the total debit of a transaction in cents
-    credit : models.IntegerField
-        the total credit of a transaction in cents
+    amount : models.IntegerField
+        the amount of credit/debit of a transaction (in cents)
     account : models.ForeignKey('Account', on_delete=models.CASCADE)
         the account that the transaction belongs to
 
@@ -25,7 +23,7 @@ class Transaction(models.Model):
         returns a string of the date, description, debit, credit
     """
 
-    date: models.DateTimeField = models.DateTimeField()
+    date: models.DateField = models.DateField()
     description: models.CharField = models.CharField(max_length=64)
     amount: models.IntegerField = models.IntegerField()
     account: models.ForeignKey = models.ForeignKey('Account', on_delete=models.CASCADE)
@@ -49,7 +47,7 @@ class Account(models.Model):
         returns the name of the account
     """
 
-    name: models.CharField = models.CharField(max_length=32, null=False)
+    name: models.CharField = models.CharField(max_length=32)
     # TODO add a foreign key field of a user
 
     def __str__(self)->str:
